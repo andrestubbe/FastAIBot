@@ -1,4 +1,4 @@
-package fastbot.core;
+package fastbot;
 
 import fastai.AI;
 import fastaimemory.ConversationHistory;
