@@ -20,8 +20,9 @@ public class DemoBotCLI {
             }
             String apiKey = Files.readString(keyFile.toPath()).trim();
 
-            // 2. Connect to FastAI
-            AI brain = FastAI.connect("gemini:gemini-1.5-flash", apiKey);
+            // 2. Connect to FastAI using local Ollama (Gemma model)
+            System.out.println("Connecting to local Ollama (make sure Ollama is running)...");
+            AI brain = FastAI.connect("ollama:krith/gemma-2-2b-it-abliterated:IQ3_M", ""); // Empty string for API key
 
             // 3. Define the LinkedIn Carousel Persona
             String systemPrompt = 
