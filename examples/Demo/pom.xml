@@ -18,5 +18,50 @@
             <artifactId>fastbot</artifactId>
             <version>0.1.0-SNAPSHOT</version>
         </dependency>
+        <dependency>
+            <groupId>com.github.andrestubbe</groupId>
+            <artifactId>FastTerminal</artifactId>
+            <version>0.1.3</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.andrestubbe</groupId>
+            <artifactId>FastTUI</artifactId>
+            <version>0.1.1</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.andrestubbe</groupId>
+            <artifactId>FastKeyboard</artifactId>
+            <version>0.1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.andrestubbe</groupId>
+            <artifactId>FastSoftware3D</artifactId>
+            <version>0.1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.andrestubbe</groupId>
+            <artifactId>FastTerminal3D</artifactId>
+            <version>0.1.1</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.andrestubbe</groupId>
+            <artifactId>FastTTS</artifactId>
+            <version>0.1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.andrestubbe</groupId>
+            <artifactId>FastAudioPlayer</artifactId>
+            <version>0.1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.andrestubbe</groupId>
+            <artifactId>FastAudioProcess</artifactId>
+            <version>0.1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.andrestubbe</groupId>
+            <artifactId>FastAnimation</artifactId>
+            <version>0.1.0</version>
+        </dependency>
     </dependencies>
 </project>
