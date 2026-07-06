@@ -96,6 +96,24 @@ public class BotHead {
             textureDrawer.setMouthOpenness(openness);
         }
     }
+
+    public void setEyeOffset(int x, int y) {
+        if (textureDrawer != null) {
+            textureDrawer.setEyeOffset(x, y);
+        }
+    }
+
+    public void setEyeScale(float scale) {
+        if (textureDrawer != null) {
+            textureDrawer.setEyeScale(scale);
+        }
+    }
+
+    public void setMouthOffset(int x, int y) {
+        if (textureDrawer != null) {
+            textureDrawer.setMouthOffset(x, y);
+        }
+    }
     
     public void setUserIsTyping(boolean typing) {
         if (gestures != null) {

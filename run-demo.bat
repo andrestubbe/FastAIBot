@@ -14,6 +14,13 @@ echo Running Demo3DTerminal...
 reg add HKCU\Console /v VirtualTerminalLevel /t REG_DWORD /d 1 /f >nul 2>&1
 
 for /f "usebackq delims=" %%i in ("examples\Demo\cp.txt") do set CP=%%i
-java --enable-native-access=ALL-UNNAMED -cp "examples\Demo\target\classes;%CP%" fastbot.Demo
-if %ERRORLEVEL% NEQ 0 ( echo Execution failed. & pause & exit /b %ERRORLEVEL% )
+
+:: Copy native DLLs so local llama can find its backends during run
+copy /Y ..\FastAIModel\build\*.dll . >nul
+
+java --enable-native-access=ALL-UNNAMED --add-modules jdk.incubator.vector -cp "examples\Demo\target\classes;%CP%" fastbot.Demo
+
+:: Clean up DLLs after execution
+del /Q *.dll
+
 

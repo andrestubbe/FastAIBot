@@ -15,6 +15,8 @@ public class InputController {
         void onAnyKeyPress(int vKey, String keyChar);
     }
 
+    public static boolean ENABLE_CHAT = true; // Set to true to use actual chat, false for gesture testing
+
     private final FastKeyboard keyboard;
 
     public InputController() {
@@ -46,30 +48,29 @@ public class InputController {
                 else if (vKey == 0x78) listener.onGestureKey("tilt_right"); // F9
                 else if (vKey == 0x79) listener.onGestureKey("surprise"); // F10
                 else if (vKey == 0x7A) listener.onGestureKey("laugh"); // F11
-                else if (vKey == 0x7B) listener.onGestureKey("sleep"); // F12
+                else if (vKey == 0x7B) listener.onGestureKey("test_displacement"); // F12
                 return;
             }
 
             if (isPressed) {
-                // TEMPORARILY DISABLED CHAT INPUT FOR GESTURE TESTING
-                /*
-                if (vKey == 0x0D) {
-                    listener.onEnter();
-                } else if (vKey == 0x08) {
-                    listener.onBackspace();
-                } else if (keyChar != null && keyChar.length() == 1) {
-                    char c = keyChar.charAt(0);
-                    if (c >= 32 && c != 127) {
-                        listener.onPrintableChar(c);
+                if (ENABLE_CHAT) {
+                    if (vKey == 0x0D) {
+                        listener.onEnter();
+                    } else if (vKey == 0x08) {
+                        listener.onBackspace();
+                    } else if (keyChar != null && keyChar.length() == 1) {
+                        char c = keyChar.charAt(0);
+                        if (c >= 32 && c != 127) {
+                            listener.onPrintableChar(c);
+                        }
                     }
-                }
-                */
-
-                // MAP A-Z and 0-9 using keyChar
-                if (keyChar != null && keyChar.length() > 0) {
-                    char c = Character.toLowerCase(keyChar.charAt(0));
-                    if ((c >= 'a' && c <= 'z') || (c >= '0' && c <= '9')) {
-                        listener.onGestureKey("key_" + c);
+                } else {
+                    // MAP A-Z and 0-9 using keyChar
+                    if (keyChar != null && keyChar.length() > 0) {
+                        char c = Character.toLowerCase(keyChar.charAt(0));
+                        if ((c >= 'a' && c <= 'z') || (c >= '0' && c <= '9')) {
+                            listener.onGestureKey("key_" + c);
+                        }
                     }
                 }
             }

@@ -478,6 +478,87 @@ public class BotHeadGestures {
         currentGestureAnim.start();
     }
 
+    public synchronized void triggerTestDisplacement() {
+        if (headNode == null) return;
+        stopCurrentGesture();
+        gestureInProgress = true;
+        // Total duration of all parts
+        gestureEndTime = System.currentTimeMillis() + 8000;
+
+        currentGestureAnim = FastAnimation.sequence(
+            // --- Part 1: Eye X Offset (left to right) ---
+            FastTween.to(eyeOffsetX, -5f, 600).ease(Ease.QUAD_OUT).onUpdate(v -> {
+                eyeOffsetX = v;
+                textureDrawer.setEyeOffset((int) eyeOffsetX, (int) eyeOffsetY);
+            }),
+            FastTween.to(-5f, 5f, 1000).ease(Ease.QUAD_IN_OUT).onUpdate(v -> {
+                eyeOffsetX = v;
+                textureDrawer.setEyeOffset((int) eyeOffsetX, (int) eyeOffsetY);
+            }),
+            FastTween.to(5f, 0f, 600).ease(Ease.QUAD_IN_OUT).onUpdate(v -> {
+                eyeOffsetX = v;
+                textureDrawer.setEyeOffset((int) eyeOffsetX, (int) eyeOffsetY);
+            }),
+
+            // --- Part 2: Eye Y Offset (up to down) ---
+            FastTween.to(eyeOffsetY, -3f, 600).ease(Ease.QUAD_OUT).onUpdate(v -> {
+                eyeOffsetY = v;
+                textureDrawer.setEyeOffset((int) eyeOffsetX, (int) eyeOffsetY);
+            }),
+            FastTween.to(-3f, 3f, 1000).ease(Ease.QUAD_IN_OUT).onUpdate(v -> {
+                eyeOffsetY = v;
+                textureDrawer.setEyeOffset((int) eyeOffsetX, (int) eyeOffsetY);
+            }),
+            FastTween.to(3f, 0f, 600).ease(Ease.QUAD_IN_OUT).onUpdate(v -> {
+                eyeOffsetY = v;
+                textureDrawer.setEyeOffset((int) eyeOffsetX, (int) eyeOffsetY);
+            }),
+
+            // --- Part 3: Eye Scale (larger to smaller) ---
+            FastTween.to(eyeScale, 1.6f, 800).ease(Ease.QUAD_OUT).onUpdate(v -> {
+                eyeScale = v;
+                textureDrawer.setEyeScale(eyeScale);
+            }),
+            FastTween.to(1.6f, 0.4f, 1000).ease(Ease.QUAD_IN_OUT).onUpdate(v -> {
+                eyeScale = v;
+                textureDrawer.setEyeScale(eyeScale);
+            }),
+            FastTween.to(0.4f, 1.0f, 800).ease(Ease.QUAD_IN_OUT).onUpdate(v -> {
+                eyeScale = v;
+                textureDrawer.setEyeScale(eyeScale);
+            }),
+
+            // --- Part 4: Mouth X Offset (left to right) ---
+            FastTween.to(mouthOffsetX, -6f, 600).ease(Ease.QUAD_OUT).onUpdate(v -> {
+                mouthOffsetX = v;
+                textureDrawer.setMouthOffset((int) mouthOffsetX, (int) mouthOffsetY);
+            }),
+            FastTween.to(-6f, 6f, 1000).ease(Ease.QUAD_IN_OUT).onUpdate(v -> {
+                mouthOffsetX = v;
+                textureDrawer.setMouthOffset((int) mouthOffsetX, (int) mouthOffsetY);
+            }),
+            FastTween.to(6f, 0f, 600).ease(Ease.QUAD_IN_OUT).onUpdate(v -> {
+                mouthOffsetX = v;
+                textureDrawer.setMouthOffset((int) mouthOffsetX, (int) mouthOffsetY);
+            }),
+
+            // --- Part 5: Mouth Y Offset (up to down) ---
+            FastTween.to(mouthOffsetY, -4f, 600).ease(Ease.QUAD_OUT).onUpdate(v -> {
+                mouthOffsetY = v;
+                textureDrawer.setMouthOffset((int) mouthOffsetX, (int) mouthOffsetY);
+            }),
+            FastTween.to(-4f, 4f, 1000).ease(Ease.QUAD_IN_OUT).onUpdate(v -> {
+                mouthOffsetY = v;
+                textureDrawer.setMouthOffset((int) mouthOffsetX, (int) mouthOffsetY);
+            }),
+            FastTween.to(4f, 0f, 600).ease(Ease.QUAD_IN_OUT).onUpdate(v -> {
+                mouthOffsetY = v;
+                textureDrawer.setMouthOffset((int) mouthOffsetX, (int) mouthOffsetY);
+            })
+        );
+        currentGestureAnim.start();
+    }
+
     public String getLastGestureName() {
         return lastGestureName;
     }
@@ -485,6 +566,9 @@ public class BotHeadGestures {
     public synchronized void performGesture(String name) {
         this.lastGestureName = name.toUpperCase();
         switch (name.toLowerCase()) {
+            case "test_displacement":
+                triggerTestDisplacement();
+                break;
             case "nod":
                 triggerNod();
                 break;

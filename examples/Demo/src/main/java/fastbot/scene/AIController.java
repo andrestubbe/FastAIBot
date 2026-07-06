@@ -17,6 +17,7 @@ public class AIController {
     private final AtomicReference<AI> brainRef = new AtomicReference<>(null);
     private final AtomicReference<String> systemPromptRef = new AtomicReference<>("");
     private final AtomicBoolean aiReady = new AtomicBoolean(false);
+    private static final boolean USE_LOCAL_LLAMA = true; // Toggle between true (local llama.cpp JNI) and false (Ollama)
     private volatile boolean ollamaMissing = false;
 
     public AIController() {
@@ -28,19 +29,30 @@ public class AIController {
     public void start() {
         aiExecutor.submit(() -> {
             try {
-                AI brain = FastAI.connect("ollama:llama3.2:1b", "");
+                AI brain;
+                if (USE_LOCAL_LLAMA) {
+                    brain = FastAI.connect("llama:C:\\Users\\andre\\Documents\\2026-06-14-Work-FastJava\\FastAI\\examples\\Demo\\models\\Llama-3.2-1B-Instruct-Q8_0.gguf");
+                } else {
+                    brain = FastAI.connect("ollama:llama3.2:1b", "");
+                }
                 brainRef.set(brain);
+
+                // Pre-warm the model to load it into VRAM/RAM without polluting the chatbot history
+                try {
+                    brain.generate(fastai.AIRequest.of("Hello"));
+                } catch (Throwable warmupErr) {
+                    System.err.println("Warning: Warmup failed: " + warmupErr.getMessage());
+                }
+
                 String systemPrompt = Files.readString(Paths.get("C:\\Users\\andre\\Documents\\2026-06-14-Work-FastJava\\FastBot\\prompts\\alternative_linkedin_prompt.txt"));
                 systemPromptRef.set(systemPrompt);
 
                 FastBot bot = new FastBot(brain, systemPrompt, token -> {}, action -> {});
                 botRef.set(bot);
 
-                // Force actual VRAM load by sending a short dummy request
-                bot.streamChat("Pre-warm");
-
                 aiReady.set(true);
             } catch (Throwable t) {
+                t.printStackTrace();
                 if (t.getMessage() != null && (t.getMessage().contains("ConnectException") || t.getMessage().contains("Connection refused"))) {
                     ollamaMissing = true;
                 }
