@@ -2,9 +2,6 @@ package fastbot;
 
 import fastansi.FastANSI;
 import fastbot.scene.BotAudioController;
-import fastbot.scene.ConversationController;
-import fastbot.scene.InputController;
-import fastbot.scene.RenderController;
 import fastterminal.FastTerminal;
 
 public class Demo {

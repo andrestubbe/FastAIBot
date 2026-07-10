@@ -121,7 +121,6 @@ public class BotHeadGestures {
         gestureInProgress = true;
         gestureEndTime = System.currentTimeMillis() + GESTURE_NOD_DURATION;
 
-
         final long duration1 = (long) (Math.random() * 150 + 150f);
         final long duration2 = (long) (Math.random() * 150 + 150f);
         final long duration3 = Math.max(duration1, duration2);

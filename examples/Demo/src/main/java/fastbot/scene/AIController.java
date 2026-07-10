@@ -17,7 +17,7 @@ public class AIController {
     private final AtomicReference<AI> brainRef = new AtomicReference<>(null);
     private final AtomicReference<String> systemPromptRef = new AtomicReference<>("");
     private final AtomicBoolean aiReady = new AtomicBoolean(false);
-    private static final boolean USE_LOCAL_LLAMA = true; // Toggle between true (local llama.cpp JNI) and false (Ollama)
+    private static final boolean USE_LOCAL_LLAMA = false; // Toggle between true (local llama.cpp JNI) and false (Ollama)
     private volatile boolean ollamaMissing = false;
 
     public AIController() {
@@ -44,7 +44,8 @@ public class AIController {
                     System.err.println("Warning: Warmup failed: " + warmupErr.getMessage());
                 }
 
-                String systemPrompt = Files.readString(Paths.get("C:\\Users\\andre\\Documents\\2026-06-14-Work-FastJava\\FastBot\\prompts\\alternative_linkedin_prompt.txt"));
+                String systemPrompt = Files.readString(Paths.get("C:\\Users\\andre\\Documents\\2026-06-14-Work-FastJava\\FastBot\\prompts\\prompt.txt"));
+//                String systemPrompt = Files.readString(Paths.get("C:\\Users\\andre\\Documents\\2026-06-14-Work-FastJava\\FastBot\\prompts\\alternative_linkedin_prompt.txt"));
                 systemPromptRef.set(systemPrompt);
 
                 FastBot bot = new FastBot(brain, systemPrompt, token -> {}, action -> {});
