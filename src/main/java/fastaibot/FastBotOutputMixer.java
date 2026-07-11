@@ -1,4 +1,4 @@
-package fastbot;
+package fastaibot;
 
 import java.util.function.Consumer;
 
