@@ -201,8 +201,8 @@ Download the required JARs directly to add them to your classpath:
 | Platform | Status |
 |----------|--------|
 | Windows 10/11 (x64) | ✅ Fully Supported |
-| Linux | ✅ Fully Supported |
-| macOS | ✅ Fully Supported |
+| Linux | 🚧 Planned |
+| macOS | 🚧 Planned |
 
 ---
 
