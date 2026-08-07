@@ -100,6 +100,8 @@ Die schlanke Orchestrator-Runtime für interaktive Bot-Systeme.
 
 ## Installation
 
+FastJava modules require two dependencies: the module itself, and FastCore (which handles the native library extraction).
+
 ### Maven (JitPack)
 ```xml
 <repositories>
@@ -112,11 +114,36 @@ Die schlanke Orchestrator-Runtime für interaktive Bot-Systeme.
 <dependencies>
     <dependency>
         <groupId>com.github.andrestubbe</groupId>
-        <artifactId>fastbot</artifactId>
+        <artifactId>FastAIBot</artifactId>
+        <version>0.1.2</version>
+    </dependency>
+    <dependency>
+        <groupId>com.github.andrestubbe</groupId>
+        <artifactId>FastCore</artifactId>
         <version>0.1.0</version>
     </dependency>
 </dependencies>
 ```
+
+### Gradle (JitPack)
+```groovy
+repositories {
+    maven { url 'https://jitpack.io' }
+}
+
+dependencies {
+    implementation 'com.github.andrestubbe:FastAIBot:0.1.2'
+    implementation 'com.github.andrestubbe:FastCore:0.1.0'
+}
+```
+
+### Direct Download (No Build Tool)
+Download the latest JARs directly to add them to your classpath:
+- 📦 [fastaibot-0.1.2.jar](https://github.com/andrestubbe/FastAIBot/releases) (The Core Library)
+- ⚙️ [fastcore-v0.1.0.jar](https://github.com/andrestubbe/FastCore/releases) (The Mandatory Native Loader)
+
+> [!IMPORTANT]
+> Both JARs must be in your classpath for the native JNI calls to function correctly.
 
 ---
 
