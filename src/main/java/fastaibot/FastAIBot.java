@@ -28,7 +28,7 @@ import java.util.function.Consumer;
  * }</pre>
  *
  * @author Andre Stubbe
- * @version 0.1.1
+ * @version 0.1.2
  * @see AI
  * @see ConversationHistory
  * @see MemoryContextBuilder
@@ -122,7 +122,4 @@ public final class FastAIBot {
         this.history.assistant(this.responseBuffer.toString());
     }
 
-    public ConversationHistory getHistory() {
-        return this.history;
-    }
 }

@@ -12,6 +12,8 @@ FastAIBot is the orchestrator of the **FastJava** ecosystem. It bridges the pure
 
 By streaming LLM output tokens in real-time, FastAIBot enables instant responses without JSON-parsing latency.
 
+[![Showcase](docs/screenshot.png)
+
 ---
 
 ## Quick Start — Example
@@ -25,7 +27,7 @@ import java.util.function.Consumer;
 public class Demo {
     public static void main(String[] args) {
         // 1. Connect the Brain
-        AI brain = FastAI.connect("gemini:gemini-1.5-flash", "api-key");
+        AI brain = FastAI.connect("gemini:gemini-2.5-flash", "api-key");
 
         // 2. Define Text Output Consumer
         Consumer<String> textOut = text -> System.out.print(text);
