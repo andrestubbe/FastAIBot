@@ -100,7 +100,7 @@ Die schlanke Orchestrator-Runtime für interaktive Bot-Systeme.
 
 ## Installation
 
-FastJava modules require two dependencies: the module itself, and FastCore (which handles the native library extraction).
+FastAIBot integrates with the FastJava ecosystem modules for LLM streaming, memory context management, and native SIMD String acceleration.
 
 ### Maven (JitPack)
 ```xml
@@ -112,9 +112,34 @@ FastJava modules require two dependencies: the module itself, and FastCore (whic
 </repositories>
 
 <dependencies>
+    <!-- FastAIBot Orchestrator -->
     <dependency>
         <groupId>com.github.andrestubbe</groupId>
-        <artifactId>FastAIBot</artifactId>
+        <artifactId>fastaibot</artifactId>
+        <version>0.1.2</version>
+    </dependency>
+
+    <!-- FastAI & FastAIMemory -->
+    <dependency>
+        <groupId>com.github.andrestubbe</groupId>
+        <artifactId>FastAI</artifactId>
+        <version>0.1.4</version>
+    </dependency>
+    <dependency>
+        <groupId>com.github.andrestubbe</groupId>
+        <artifactId>FastAIMemory</artifactId>
+        <version>0.1.3</version>
+    </dependency>
+
+    <!-- FastJava Core & Utility Dependencies -->
+    <dependency>
+        <groupId>com.github.andrestubbe</groupId>
+        <artifactId>FastString</artifactId>
+        <version>0.1.0</version>
+    </dependency>
+    <dependency>
+        <groupId>com.github.andrestubbe</groupId>
+        <artifactId>FastJSON</artifactId>
         <version>0.1.2</version>
     </dependency>
     <dependency>
@@ -132,18 +157,27 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.github.andrestubbe:FastAIBot:0.1.2'
+    implementation 'com.github.andrestubbe:fastaibot:0.1.2'
+    implementation 'com.github.andrestubbe:FastAI:0.1.4'
+    implementation 'com.github.andrestubbe:FastAIMemory:0.1.3'
+    implementation 'com.github.andrestubbe:FastString:0.1.0'
+    implementation 'com.github.andrestubbe:FastJSON:0.1.2'
     implementation 'com.github.andrestubbe:FastCore:0.1.0'
 }
 ```
 
 ### Direct Download (No Build Tool)
-Download the latest JARs directly to add them to your classpath:
-- 📦 [fastaibot-0.1.2.jar](https://github.com/andrestubbe/FastAIBot/releases) (The Core Library)
-- ⚙️ [fastcore-v0.1.0.jar](https://github.com/andrestubbe/FastCore/releases) (The Mandatory Native Loader)
+Download the required JARs directly to add them to your classpath:
+
+1. 🤖 [fastaibot-0.1.2.jar](https://github.com/andrestubbe/FastAIBot/releases/download/0.1.2/fastaibot-0.1.2.jar) (Bot Orchestrator)
+2. ⚡ [fastai-0.1.4.jar](https://github.com/andrestubbe/FastAI/releases/download/0.1.4/fastai-0.1.4.jar) (LLM Engine)
+3. 🧠 [FastAIMemory-0.1.3.jar](https://github.com/andrestubbe/FastAIMemory/releases) (Context & History)
+4. 🚀 [FastString-0.1.0.jar](https://github.com/andrestubbe/FastString/releases/download/0.1.0/FastString-0.1.0.jar) (Zero-Copy Buffer)
+5. 📦 [FastJSON-0.1.2.jar](https://github.com/andrestubbe/FastJSON/releases/download/0.1.2/FastJSON-0.1.2.jar) (JSON Parser)
+6. ⚙️ [fastcore-0.1.0.jar](https://github.com/andrestubbe/FastCore/releases/download/0.1.0/fastcore-0.1.0.jar) (Mandatory Native Loader)
 
 > [!IMPORTANT]
-> Both JARs must be in your classpath for the native JNI calls to function correctly.
+> All JARs must be included in your classpath for the native JNI bindings and context pipelines to function correctly.
 
 ---
 
