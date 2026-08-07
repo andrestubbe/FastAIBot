@@ -177,7 +177,7 @@ Download the required JARs directly to add them to your classpath:
 
 1. 🤖 [fastaibot-0.1.2.jar](https://github.com/andrestubbe/FastAIBot/releases/download/0.1.2/fastaibot-0.1.2.jar) (Bot Orchestrator)
 2. ⚡ [fastai-0.1.4.jar](https://github.com/andrestubbe/FastAI/releases/download/0.1.4/fastai-0.1.4.jar) (LLM Engine)
-3. 📦 [FastAIModel-0.1.1.jar](https://github.com/andrestubbe/FastAIModel/releases) (Local ONNX Model Engine)
+3. 📦 [FastAIModel-0.1.1.jar](https://github.com/andrestubbe/FastAIModel/releases) (Local GGUF / llama.cpp & ONNX Model Engine)
 4. 🧠 [FastAIMemory-0.1.3.jar](https://github.com/andrestubbe/FastAIMemory/releases) (Context & History)
 5. 🚀 [FastString-0.1.0.jar](https://github.com/andrestubbe/FastString/releases/download/0.1.0/FastString-0.1.0.jar) (Zero-Copy Buffer)
 6. 📦 [FastJSON-0.1.2.jar](https://github.com/andrestubbe/FastJSON/releases/download/0.1.2/FastJSON-0.1.2.jar) (JSON Parser)
