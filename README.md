@@ -1,6 +1,6 @@
 # FastBot 0.1.1 [ALPHA-2026-08] — High-Performance Bot Orchestrator for Java
 
-[![Status](https://img.shields.io/badge/status-0.1.0-brightgreen.svg)]()
+[![Status](https://img.shields.io/badge/status-0.1.1-brightgreen.svg)]()
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Java](https://img.shields.io/badge/Java-17+-blue.svg)](https://www.java.com)
 [![Platform](https://img.shields.io/badge/Platform-Windows%2010+-lightgrey.svg)]()
