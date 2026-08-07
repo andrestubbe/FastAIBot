@@ -24,7 +24,7 @@
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/andre/Documents/2026-06-14-Work-FastJava/FastBot/prompts",
+    "last_opened_file_path": "C:/Users/andre/Documents/2026-06-14-Work-FastJava/FastAIBot",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2"
@@ -34,6 +34,13 @@
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\andre\Documents\2026-06-14-Work-FastJava\FastBot\prompts" />
     </key>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-30f59d01ecdd-63390994e64e-intellij.indexing.shared.core-IU-262.8665.337" />
+      </set>
+    </attachedChunks>
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">

@@ -1,4 +1,4 @@
-# FastBot 0.1.0 [ALPHA-2026-06] — High-Performance Bot Orchestrator for Java
+# FastBot 0.1.1 [ALPHA-2026-08] — High-Performance Bot Orchestrator for Java
 
 [![Status](https://img.shields.io/badge/status-0.1.0-brightgreen.svg)]()
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
@@ -6,34 +6,34 @@
 [![Platform](https://img.shields.io/badge/Platform-Windows%2010+-lightgrey.svg)]()
 [![JitPack](https://img.shields.io/badge/JitPack-ready-green.svg)]()
 
-**⚡ A zero-latency, asynchronous orchestration runtime connecting LLM brains, conversation memory, and multi-channel outputs.**
+**⚡ A zero-latency, asynchronous orchestration runtime connecting LLM brains and conversation memory.**
 
-FastBot is the central nervous system of the **FastJava** ecosystem. It bridges the pure AI generation of `FastAI` with persistent state (`FastAIMemory`) and high-performance interactive interfaces (`FastTerminal`, `FastTTS`, `FastFace`).
+FastBot is the orchestrator of the **FastJava** ecosystem. It bridges the pure AI generation of `FastAI` with persistent state (`FastAIMemory`) and streaming interfaces.
 
-By natively parsing LLM output streams in real-time, FastBot allows for instantaneous multi-channel dispatch—enabling bots that can talk, type, and animate their faces simultaneously without JSON-parsing latency.
+By streaming LLM output tokens in real-time, FastBot enables instant responses without JSON-parsing latency.
 
 ---
 
 ## Quick Start — Example
 
 ```java
-import fastbot.FastBot;
+import fastaibot.FastAIBot;
 import fastai.FastAI;
 import fastai.AI;
+import java.util.function.Consumer;
 
 public class Demo {
     public static void main(String[] args) {
         // 1. Connect the Brain
         AI brain = FastAI.connect("gemini:gemini-1.5-flash", "api-key");
 
-        // 2. Define Multi-Channel Output (The Mixer)
-        Consumer<String> textOut = text -> System.out.print(text); // To FastTerminal/TTS
-        Consumer<String> actionOut = action -> triggerFaceAnimation(action); // To 3D Engine
+        // 2. Define Text Output Consumer
+        Consumer<String> textOut = text -> System.out.print(text);
 
         // 3. Boot the Bot
-        FastBot bot = new FastBot(brain, "You are a sarcastic AI...", textOut, actionOut);
+        FastAIBot bot = new FastAIBot(brain, "You are a helpful AI...", textOut);
 
-        // 4. Talk (Streams instantly, bypassing JSON lag)
+        // 4. Talk (Streams instantly)
         bot.streamChat("Are you a bot in a monitor?");
     }
 }
@@ -54,39 +54,35 @@ public class Demo {
 ---
 
 ## Why FastBot?
-The standard approach to multi-modal AI involves parsing massive JSON blocks, resulting in slow responsiveness. The FastJava philosophy requires zero latency. FastBot uses an inline-tag stream parser (`[ACTION:...]`) to instantly split text and behavior, giving bots immediate responsiveness while maintaining a pure, stateless connection layer in `FastAI`.
+Traditional AI frameworks add heavy abstraction layers and slow JSON parsing overhead, introducing noticeable latency to live interactions. FastBot provides a zero-latency, high-performance orchestration layer for Java. It connects `FastAI`'s stateless LLM stream directly with `FastAIMemory`'s context history, streaming incoming response tokens to your application in real-time.
 
 ---
 
 ## Key Features
-* **🚫 Zero Lag Routing** — Parses tokens directly as they arrive, avoiding blocking JSON parsers.
-* **🎭 Multi-Channel Mixer** — Splits speech and animations into separate execution pipelines.
+* **🚫 Zero Lag Streaming** — Passes tokens directly as they arrive without JSON-parsing overhead.
 * **🧠 Context Awareness** — Seamlessly integrates with `FastAIMemory` for session persistence.
 * **⚡ State-Minimized** — Built entirely in pure Java with zero heavy framework bloat.
 
 ---
 
-## Architecture Overview (FastBot vs FastAI)
+## Architecture Overview
 
 **FastAI (The Brain)**  
 Minimalistischer, hyper-schneller Java-LLM-Client.
 - Keine Abhängigkeiten.
 - Kein Event-System.
-- Kein Tool-Routing.
 - Kein State-Management.
-- Kein Output-Mixing.
 → *Nur: Prompt rein, Tokens raus.*
 
-**FastBot (The Nervous System)**  
-Die Orchestrator-Runtime für Bots, Agenten und interaktive Systeme.
-Verbindet `FastAI`, `FastAIMemory`, `FastAIModel`, `FastTerminal`, `FastTTS` und Tools.
-- **FastBotSessionManager**: Verwaltet Memory-Scopes und Context-IDs.
-- **FastBotEventLoop**: Non-blocking Dispatcher für parallele Streams.
-- **FastBotPipelineEngine**: Baut Prompts, ruft AI auf, leitet Ausgaben weiter.
-- **FastBotToolBridge**: Registriert und führt Java-Methoden als LLM-Tools aus.
-- **FastBotOutputMixer**: Multi-Channel Output (Terminal, Audio, Face).
-- **FastBotStateMachine**: Bot-Zustände (Interview Mode, Silent Mode).
-- **FastBotTelemetry**: Token-, Event- und Tool-Logs.
+**FastAIMemory (The Memory)**  
+Modul zur Verwaltung von Gesprächskontexten und Verläufen.
+- **ConversationHistory**: Speichert und strukturiert Dialoghistorien (System, User, Assistant).
+- **MemoryContextBuilder**: Baut formatierte Prompts unter Einbeziehung des Chat-Kontextes.
+
+**FastAIBot (The Orchestrator)**  
+Die schlanke Orchestrator-Runtime für interaktive Bot-Systeme.
+- Verbindet `FastAI` (LLM-Inferenz) und `FastAIMemory` (Kontext-Verwaltung).
+- Steuert den Echtzeit-Chatverlauf und verteilt Token-Streams ohne Overhead.
 
 ---
 
@@ -98,7 +94,7 @@ Verbindet `FastAI`, `FastAIMemory`, `FastAIModel`, `FastTerminal`, `FastTTS` und
 | `getHistory()` | Returns the active `ConversationHistory`. | [Reference →](docs/REFERENCE.md#gethistory) |
 
 > [!TIP]
-> See **[docs/REFERENCE.md](docs/REFERENCE.md)** for full documentation on Action Tags and Output Routing.
+> See **[REFERENCE.md](docs/REFERENCE.md)** for full documentation.
 
 ---
 
@@ -125,11 +121,11 @@ Verbindet `FastAI`, `FastAIMemory`, `FastAIModel`, `FastTerminal`, `FastTTS` und
 ---
 
 ## Documentation
-* **[docs/REFERENCE.md](docs/REFERENCE.md)**: Full API contracts and routing logic.
-* **[docs/PHILOSOPHY.md](docs/PHILOSOPHY.md)**: The "Zero Latency" orchestrator philosophy.
-* **[docs/COMPILE.md](docs/COMPILE.md)**: Build instructions.
-* **[docs/CHANGELOG.md](docs/CHANGELOG.md)**: Project history.
-* **[docs/ROADMAP.md](docs/ROADMAP.md)**: Future development goals.
+* **[REFERENCE.md](docs/REFERENCE.md)**: Full API contracts and routing logic.
+* **[PHILOSOPHY.md](docs/PHILOSOPHY.md)**: The "Zero Latency" orchestrator philosophy.
+* **[COMPILE.md](docs/COMPILE.md)**: Build instructions.
+* **[CHANGELOG.md](docs/CHANGELOG.md)**: Project history.
+* **[ROADMAP.md](docs/ROADMAP.md)**: Future development goals.
 
 ---
 
