@@ -68,21 +68,21 @@ Traditional AI frameworks add heavy abstraction layers and slow JSON parsing ove
 ## Architecture Overview
 
 **FastAI (The Brain)**  
-Minimalistischer, hyper-schneller Java-LLM-Client.
-- Keine Abhängigkeiten.
-- Kein Event-System.
-- Kein State-Management.
-→ *Nur: Prompt rein, Tokens raus.*
+Minimalist, hyper-fast Java LLM client.
+- Zero dependencies.
+- No event system.
+- No state management.
+→ *Input: Prompt in, Tokens out.*
 
 **FastAIMemory (The Memory)**  
-Modul zur Verwaltung von Gesprächskontexten und Verläufen.
-- **ConversationHistory**: Speichert und strukturiert Dialoghistorien (System, User, Assistant).
-- **MemoryContextBuilder**: Baut formatierte Prompts unter Einbeziehung des Chat-Kontextes.
+Module for managing conversation contexts and histories.
+- **ConversationHistory**: Stores and structures dialogue histories (System, User, Assistant).
+- **MemoryContextBuilder**: Constructs formatted context prompts for LLMs.
 
 **FastAIBot (The Orchestrator)**  
-Die schlanke Orchestrator-Runtime für interaktive Bot-Systeme.
-- Verbindet `FastAI` (LLM-Inferenz) und `FastAIMemory` (Kontext-Verwaltung).
-- Steuert den Echtzeit-Chatverlauf und verteilt Token-Streams ohne Overhead.
+Lightweight orchestrator runtime for interactive bot systems.
+- Connects `FastAI` (LLM inference) and `FastAIMemory` (context management).
+- Manages real-time multi-turn conversation flow and streams tokens without overhead.
 
 ---
 
