@@ -1,4 +1,4 @@
-# FastBot 0.1.1 [ALPHA-2026-08] — High-Performance Bot Orchestrator for Java
+# FastAIBot 0.1.1 [ALPHA-2026-08] — High-Performance Bot Orchestrator for Java
 
 [![Status](https://img.shields.io/badge/status-0.1.1-brightgreen.svg)]()
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
@@ -8,9 +8,9 @@
 
 **⚡ A zero-latency, asynchronous orchestration runtime connecting LLM brains and conversation memory.**
 
-FastBot is the orchestrator of the **FastJava** ecosystem. It bridges the pure AI generation of `FastAI` with persistent state (`FastAIMemory`) and streaming interfaces.
+FastAIBot is the orchestrator of the **FastJava** ecosystem. It bridges the pure AI generation of `FastAI` with persistent state (`FastAIMemory`) and streaming interfaces.
 
-By streaming LLM output tokens in real-time, FastBot enables instant responses without JSON-parsing latency.
+By streaming LLM output tokens in real-time, FastAIBot enables instant responses without JSON-parsing latency.
 
 ---
 
@@ -42,9 +42,9 @@ public class Demo {
 ---
 
 ## Table of Contents
-- [Why FastBot?](#why-fastbot)
+- [Why FastAIBot?](#why-fastaibot)
 - [Key Features](#key-features)
-- [Architecture Overview (FastBot vs FastAI)](#architecture-overview-fastbot-vs-fastai)
+- [Architecture Overview (FastAIBot vs FastAI)](#architecture-overview-fastaibot-vs-fastai)
 - [API Quick Reference](#api-quick-reference)
 - [Installation](#installation)
 - [Documentation](#documentation)
@@ -53,8 +53,8 @@ public class Demo {
 
 ---
 
-## Why FastBot?
-Traditional AI frameworks add heavy abstraction layers and slow JSON parsing overhead, introducing noticeable latency to live interactions. FastBot provides a zero-latency, high-performance orchestration layer for Java. It connects `FastAI`'s stateless LLM stream directly with `FastAIMemory`'s context history, streaming incoming response tokens to your application in real-time.
+## Why FastAIBot?
+Traditional AI frameworks add heavy abstraction layers and slow JSON parsing overhead, introducing noticeable latency to live interactions. FastAIBot provides a zero-latency, high-performance orchestration layer for Java. It connects `FastAI`'s stateless LLM stream directly with `FastAIMemory`'s context history, streaming incoming response tokens to your application in real-time.
 
 ---
 
