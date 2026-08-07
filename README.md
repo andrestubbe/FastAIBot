@@ -1,10 +1,10 @@
-# FastAIBot 0.1.1 [ALPHA-2026-08] — High-Performance Bot Orchestrator for Java
+# FastAIBot 0.1.2 [ALPHA-2026-08] — High-Performance Bot Orchestrator for Java
 
-[![Status](https://img.shields.io/badge/status-0.1.1-brightgreen.svg)]()
+[![Status](https://img.shields.io/badge/status-0.1.2-brightgreen.svg)]()
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Java](https://img.shields.io/badge/Java-17+-blue.svg)](https://www.java.com)
 [![Platform](https://img.shields.io/badge/Platform-Windows%2010+-lightgrey.svg)]()
-[![JitPack](https://img.shields.io/badge/JitPack-0.1.1-green.svg)](https://jitpack.io/#andrestubbe/FastAIBot)
+[![JitPack](https://img.shields.io/badge/JitPack-0.1.2-green.svg)](https://jitpack.io/#andrestubbe/FastAIBot)
 
 **⚡ A zero-latency, asynchronous orchestration runtime connecting LLM brains and conversation memory.**
 
