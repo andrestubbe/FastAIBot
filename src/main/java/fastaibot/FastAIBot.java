@@ -46,7 +46,7 @@ public final class FastAIBot {
      * @param systemPrompt the initial system instruction to set the bot's persona (may be {@code null})
      * @param textOutput   the consumer that receives each generated text token in real-time
      */
-    public FastAIBot(AI ai, String systemPrompt, Consumer<String> textOutput) {
+    public FastAIBot(final AI ai, final String systemPrompt, final Consumer<String> textOutput) {
         this(ai, systemPrompt, textOutput, new PlainTextFormatter());
     }
 
@@ -58,7 +58,7 @@ public final class FastAIBot {
      * @param textOutput   the consumer that receives each generated text token in real-time
      * @param formatter    the memory formatter used by {@link MemoryContextBuilder} to structure prompts
      */
-    public FastAIBot(AI ai, String systemPrompt, Consumer<String> textOutput, MemoryFormatter formatter) {
+    public FastAIBot(final AI ai, final String systemPrompt, final Consumer<String> textOutput, final MemoryFormatter formatter) {
         this.ai = ai;
         this.history = new ConversationHistory();
         this.contextBuilder = new MemoryContextBuilder(formatter);
