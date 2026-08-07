@@ -127,6 +127,11 @@ FastAIBot integrates with the FastJava ecosystem modules for LLM streaming, memo
     </dependency>
     <dependency>
         <groupId>com.github.andrestubbe</groupId>
+        <artifactId>FastAIModel</artifactId>
+        <version>0.1.1</version>
+    </dependency>
+    <dependency>
+        <groupId>com.github.andrestubbe</groupId>
         <artifactId>FastAIMemory</artifactId>
         <version>0.1.3</version>
     </dependency>
@@ -159,6 +164,7 @@ repositories {
 dependencies {
     implementation 'com.github.andrestubbe:fastaibot:0.1.2'
     implementation 'com.github.andrestubbe:FastAI:0.1.4'
+    implementation 'com.github.andrestubbe:FastAIModel:0.1.1'
     implementation 'com.github.andrestubbe:FastAIMemory:0.1.3'
     implementation 'com.github.andrestubbe:FastString:0.1.0'
     implementation 'com.github.andrestubbe:FastJSON:0.1.2'
@@ -171,10 +177,11 @@ Download the required JARs directly to add them to your classpath:
 
 1. 🤖 [fastaibot-0.1.2.jar](https://github.com/andrestubbe/FastAIBot/releases/download/0.1.2/fastaibot-0.1.2.jar) (Bot Orchestrator)
 2. ⚡ [fastai-0.1.4.jar](https://github.com/andrestubbe/FastAI/releases/download/0.1.4/fastai-0.1.4.jar) (LLM Engine)
-3. 🧠 [FastAIMemory-0.1.3.jar](https://github.com/andrestubbe/FastAIMemory/releases) (Context & History)
-4. 🚀 [FastString-0.1.0.jar](https://github.com/andrestubbe/FastString/releases/download/0.1.0/FastString-0.1.0.jar) (Zero-Copy Buffer)
-5. 📦 [FastJSON-0.1.2.jar](https://github.com/andrestubbe/FastJSON/releases/download/0.1.2/FastJSON-0.1.2.jar) (JSON Parser)
-6. ⚙️ [fastcore-0.1.0.jar](https://github.com/andrestubbe/FastCore/releases/download/0.1.0/fastcore-0.1.0.jar) (Mandatory Native Loader)
+3. 📦 [FastAIModel-0.1.1.jar](https://github.com/andrestubbe/FastAIModel/releases) (Local ONNX Model Engine)
+4. 🧠 [FastAIMemory-0.1.3.jar](https://github.com/andrestubbe/FastAIMemory/releases) (Context & History)
+5. 🚀 [FastString-0.1.0.jar](https://github.com/andrestubbe/FastString/releases/download/0.1.0/FastString-0.1.0.jar) (Zero-Copy Buffer)
+6. 📦 [FastJSON-0.1.2.jar](https://github.com/andrestubbe/FastJSON/releases/download/0.1.2/FastJSON-0.1.2.jar) (JSON Parser)
+7. ⚙️ [fastcore-0.1.0.jar](https://github.com/andrestubbe/FastCore/releases/download/0.1.0/fastcore-0.1.0.jar) (Mandatory Native Loader)
 
 > [!IMPORTANT]
 > All JARs must be included in your classpath for the native JNI bindings and context pipelines to function correctly.
