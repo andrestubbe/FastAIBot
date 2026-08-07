@@ -1,6 +1,6 @@
 # Compilation Guide
 
-FastBot is a pure Java module with no native JNI dependencies (unlike FastTerminal or FastGPU). It relies solely on `FastAI` and `FastAIMemory`.
+FastAIBot is a lightweight Java orchestration module with zero heavy framework overhead. It relies on `FastAI`, `FastAIMemory`, `FastString`, and `FastCore`.
 
 ### Requirements
 - Java 17 or higher
@@ -13,6 +13,10 @@ mvn clean install
 ```
 
 To run the Demo:
+```bash
+run-demo.bat
+```
+or manually:
 ```bash
 cd examples/Demo
 mvn clean compile exec:java

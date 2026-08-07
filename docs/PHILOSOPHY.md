@@ -1,18 +1,22 @@
-# The Philosophy of FastBot
+# The Philosophy of FastAIBot
 
 > [!IMPORTANT]
-> **"Zero JSON latency. Parallel Output. Pure Execution."**
+> **"Zero Latency. Zero GC Overhead. Instant Token Streaming."**
 
-FastBot operates on a fundamental truth of the FastJava ecosystem: parsing massive JSON blobs to separate a bot's actions from its speech is fundamentally too slow for real-time interaction. 
+FastAIBot operates on a fundamental principle of the FastJava ecosystem: conversational AI must stream tokens to the user the exact millisecond they arrive from the LLM, without heavy JSON parsing or object allocation overhead.
 
 ### Core Tenets
 
-1. **Inline Streaming Logic**
-   By forcing the LLM to output actions inline (`[ACTION:...]`), FastBot can act upon those commands the exact millisecond they stream in, simultaneously piping the raw text to audio generation (`FastTTS`) or terminal rendering (`FastTerminal`).
+1. **Direct Token Streaming**
+   FastAIBot pipes streaming LLM tokens straight to the designated consumer as they arrive, providing zero-latency real-time response generation.
 
-2. **Absolute Separation of Concerns**
-   - **FastAI** generates tokens. It does not know what those tokens do.
-   - **FastBot** orchestrates the tokens. It connects them to tools, UI, and memory.
+2. **Native Zero-Allocation Buffering**
+   By leveraging `FastString` off-heap native memory buffers, FastAIBot records the full assistant response into `FastAIMemory` without creating temporary Heap objects or causing Garbage Collector pauses.
 
-3. **No Heavy Frameworks**
-   FastBot does not use Spring Contexts, dependency injection, or bloated abstractions. It is pure, instantiated Java designed for absolute speed and minimal garbage collection.
+3. **Absolute Separation of Concerns**
+   - **FastAI**: Generates LLM tokens.
+   - **FastAIMemory**: Manages multi-turn conversation history and context formatting.
+   - **FastAIBot**: Orchestrates LLM execution with persistent state and streaming output channels.
+
+4. **No Heavy Frameworks**
+   FastAIBot is built with zero framework overhead. It contains no dependency injection containers or heavy abstractions—just fast, predictable Java execution.

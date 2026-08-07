@@ -1,26 +1,25 @@
-# FastBot Reference
+# FastAIBot Reference
 
-This document outlines the API contracts and architectural patterns for the FastBot orchestration runtime.
+This document outlines the API contracts and architectural patterns for the `FastAIBot` orchestration runtime.
 
-## Classes
+## Core Class
 
-### `FastBot`
-The core orchestration instance.
+### `FastAIBot`
+The central bot orchestrator connecting `FastAI` inference with `FastAIMemory` history and `FastString` zero-allocation response buffering.
 
-- `public FastBot(AI ai, String systemPrompt, Consumer<String> textOutput, Consumer<String> actionOutput)`
-  Initializes the orchestrator, binding the LLM brain to the specific output channels.
-  
-- `public void streamChat(String userInput)`
-  Executes a non-blocking stream interaction. Text flows to `textOutput`, while intercepted actions flow to `actionOutput`.
+#### Constructors
+- `public FastAIBot(AI ai, String systemPrompt, Consumer<String> textOutput)`  
+  Initializes the orchestrator with default `PlainTextFormatter` and default 64 KB native `FastString` buffer.
 
-### `FastBotOutputMixer`
-An implementation of `Consumer<String>` that splits LLM streams.
-- It parses inline tags formatted as `[ACTION:xyz]`.
-- Strips the tags from the raw text stream.
-- Routes the action string directly to the designated action channel.
+- `public FastAIBot(AI ai, String systemPrompt, Consumer<String> textOutput, MemoryFormatter formatter)`  
+  Initializes the orchestrator with a custom memory formatter.
 
-### `FastBotSessionManager` *(Planned)*
-Handles concurrency for multiple users connecting to the same Bot instance.
+- `public FastAIBot(AI ai, String systemPrompt, Consumer<String> textOutput, MemoryFormatter formatter, int initialBufferBytes)`  
+  Initializes the orchestrator with custom memory formatting and configurable initial native `FastString` buffer capacity.
 
-### `FastBotToolBridge` *(Planned)*
-Maps `@Tool` annotated Java functions to LLM function-calling specs.
+#### Methods
+- `public void streamChat(String userInput)`  
+  Executes a multi-turn chat interaction. Appends user input to `ConversationHistory`, streams response tokens real-time to `textOutput`, and buffers the full response in native memory without Java heap allocation.
+
+- `public ConversationHistory getHistory()`  
+  Returns the active conversation history instance.
