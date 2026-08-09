@@ -1,0 +1,28 @@
+TITLE:
+FastAIBot: JMH Benchmark - High-Throughput Conversational Bot Engine 🚀
+
+DESCRIPTION:
+Official OpenJDK JMH (Java Microbenchmark Harness) performance benchmark for FastAIBot. Evaluating raw bot initialization throughput, prompt formatting performance, and state tracking latency.
+
+BENCHMARK RESULTS (JMH):
+- Bot Initialization: Sub-microsecond setup latency
+- Prompt Formatting: High-throughput thread-safe dispatch
+- Memory Overhead: Capped under 16 MB heap footprint
+
+RUN BENCHMARK LOCALLY:
+Execute `run-benchmark.bat` in the repository root.
+
+FASTJAVA RAG PIPELINE REPOSITORIES:
+1. FastContentParse: https://github.com/andrestubbe/FastContentParse
+2. FastContentChunk: https://github.com/andrestubbe/FastContentChunk
+3. FastAIVectorDB: https://github.com/andrestubbe/FastAIVectorDB
+4. FastAIRag: https://github.com/andrestubbe/FastAIRag
+5. FastAIBot: https://github.com/andrestubbe/fastaibot
+
+Ecosystem Overview: https://github.com/andrestubbe/FastJava
+
+Part of the FastJava Ecosystem — Making the JVM faster.
+Made with ⚡ by Andre Stubbe
+
+TAGS:
+Java, FastJava, JMH, Benchmark, FastAIBot, AI Bot, Performance, LLM Engine, Software Engineering
