@@ -66,6 +66,10 @@ public final class FastAIBot {
         this(ai, systemPrompt, textOutput, formatter, DEFAULT_BUFFER_BYTES);
     }
 
+    public FastAIBot(final AI ai, final String systemPrompt, final Consumer<String> textOutput, final Consumer<String> ignoredThoughtOutput) {
+        this(ai, systemPrompt, textOutput, new PlainTextFormatter(), DEFAULT_BUFFER_BYTES);
+    }
+
     /**
      * Constructs a new {@code FastAIBot} instance with a custom {@link MemoryFormatter} and initial buffer capacity.
      *
@@ -122,4 +126,7 @@ public final class FastAIBot {
         this.history.assistant(this.responseBuffer.toString());
     }
 
+    public ConversationHistory getHistory() {
+        return this.history;
+    }
 }
