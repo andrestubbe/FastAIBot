@@ -12,7 +12,9 @@ FastAIBot is the orchestrator of the **FastJava** ecosystem. It bridges the pure
 
 By streaming LLM output tokens in real-time, FastAIBot enables instant responses without JSON-parsing latency.
 
-[![Showcase](docs/screenshot.png)](https://youtu.be/Om9eVAcbSA8)
+[**Watch Demo (YouTube)**](https://youtu.be/Om9eVAcbSA8) | [Watch JMH Benchmark (Youtube)]
+
+[![FastAIBot Showcase](docs/screenshot.png)](https://youtu.be/Om9eVAcbSA8)
 
 ---
 
