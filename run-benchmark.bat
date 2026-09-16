@@ -1,17 +1,18 @@
 @echo off
 chcp 65001 >nul
-cls
+cd /d "%~dp0"
 
-echo ⚡ Building Main Project...
+echo [1/3] Building FastAIBot module...
 call mvn clean install -DskipTests -q
-if %ERRORLEVEL% NEQ 0 ( echo ❌ Main build failed. & pause & exit /b %ERRORLEVEL% )
+if %errorlevel% neq 0 ( echo [ERROR] FastAIBot build failed. & pause & exit /b 1 )
 
-echo 🛠  Building Benchmark Uber-JAR...
+echo [2/3] Building Benchmark Uber-JAR...
 cd examples\Benchmark
 call mvn clean package -DskipTests -q
-if %ERRORLEVEL% NEQ 0 ( echo ❌ Benchmark build failed. & pause & exit /b %ERRORLEVEL% )
+if %errorlevel% neq 0 ( echo [ERROR] Benchmark packaging failed. & pause & exit /b 1 )
 
-echo 🚀 Running JMH Benchmarks...
+echo [3/3] Running JMH Benchmarks...
+powershell -Command "Unblock-File -Path target\benchmarks.jar" 2>nul
 java -jar target\benchmarks.jar
 
 cd ..\..
