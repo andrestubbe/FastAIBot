@@ -64,7 +64,17 @@ public class Demo {
 
 ## Why FastAIBot?
 
-Traditional AI agent frameworks in Java introduce heavy abstraction layers, repetitive JSON parsing, and garbage collector pressure that add noticeable latency to real-time chat interactions:
+Traditional conversational AI frameworks in Java (like LangChain4j or Spring AI bot harnesses) add heavy abstraction layers, repetitive JSON parsing, and garbage collector pressure that introduce noticeable jitter to real-time chat interactions:
+
+- **Heavyweight Framework Abstractions**: Wrapping every turn in complex session objects and reflection-heavy middleware adds 15–40 ms of pipeline lag before streaming even starts.
+- **Heap Allocation Overhead**: Reallocating Java `StringBuilder` buffers on every token generates high memory churn and triggers GC pauses during prolonged conversations.
+- **Tightly Coupled Brain and State**: Most frameworks bind prompt generation directly to specific model drivers, making it impossible to switch models without losing memory formats.
+
+FastAIBot solves this by separating pure stateless inference from stateful conversation flow:
+
+- **Zero-Latency Streaming**: Passes incoming tokens directly to your UI consumer as they arrive without intermediate buffering delays.
+- **Zero-Allocation SIMD Buffering**: Utilizes native `FastString` memory to assemble full turns without GC heap churn.
+- **Clean Brain/Memory Decoupling**: Composes stateless `FastAI` clients with structured `FastAIMemory` contexts.
 
 | Feature | Standard Chat Frameworks (LangChain4j / Spring AI) | FastAIBot |
 |:---|:---|:---|
