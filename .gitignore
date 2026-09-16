@@ -1,5 +1,6 @@
-examples/
-run-demo.bat
+target/
+dependency-reduced-pom.xml
+examples/**/target/
 docs/head.blend
 docs/head.blend1
 docs/room.mtl

@@ -137,7 +137,7 @@ Traditional AI agent frameworks in Java introduce heavy abstraction layers, repe
 | Case | Java Example | Launcher | Description |
 |:---|:---|:---|:---|
 | **Interactive Console Bot** | [Demo.java](examples/Demo/src/main/java/demo/Demo.java) | `run-demo.bat` | Interactive terminal chat loop with streaming output and multi-turn memory. |
-| **JMH Microbenchmark Suite** | [BotBenchmark.java](examples/Benchmark/src/main/java/fastaibot/benchmark/BotBenchmark.java) | `run-benchmark.bat` | JMH throughput benchmark measuring initialization speed and prompt formatting latency. |
+| **JMH Microbenchmark Suite** | [Benchmark.java](examples/Benchmark/src/main/java/fastaibot/benchmark/Benchmark.java) | `run-benchmark.bat` | JMH throughput benchmark measuring initialization speed and prompt formatting latency. |
 
 ---
 
