@@ -1,3 +1,9 @@
+> [!WARNING]
+> **🚧 WORK IN PROGRESS (WIP) — Active Orchestrator Development & Tool Runtime**
+> 
+> * **Active Calibration:** Conversation state transitions, streaming buffer synchronization, and prompt context formatting are currently undergoing active calibration against multi-turn LLM workloads.
+> * **FastAI Ecosystem Integration:** Higher-level agentic tool calling, non-blocking asynchronous event loops, and multi-session orchestration will progressively integrate with **[FastAIAgent](https://github.com/andrestubbe/FastAIAgent)**, **[FastAIMemory](https://github.com/andrestubbe/FastAIMemory)**, and **[FastTTS](https://github.com/andrestubbe/FastTTS)**.
+
 # FastAIBot 0.1.2 [ALPHA-2026-08-07]: High-Performance Bot Orchestrator for Java
 
 [![Status](https://img.shields.io/badge/status-0.1.2-brightgreen.svg)](https://github.com/andrestubbe/FastAIBot/releases/tag/0.1.2)
